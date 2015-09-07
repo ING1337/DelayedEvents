@@ -28,7 +28,7 @@ function DelayedEvents:Ticker(args)
 	time = self.timer:GetMilliseconds()
 	while 1 do
 		if self.events[1] and (self.events[1].exp <= time) then
-			item = self.events[1]			-- needed to call the remove function first...
+			item = self.events[1]		-- needed to call the remove function first...
 			table.remove(self.events, 1)	-- avoids crashing the script in case of marshalling error
 			if (#self.events == 0) then Events:Unsubscribe(self.sub) end
 			Events:Fire(item.event, item.args)
